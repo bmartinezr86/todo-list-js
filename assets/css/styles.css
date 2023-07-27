@@ -1,0 +1,77 @@
+/* Fuentes */
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins/Poppins-Bold.ttf') format('truetype');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Overpass';
+    src: url('../fonts/Overpass/Overpass-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Overpass';
+    src: url('../fonts/Overpass/Overpass-Black.ttf') format('truetype');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Overpass';
+    src: url('../fonts/Overpass/Overpass-Bold.ttf') format('truetype');
+    font-weight: 900;
+}
+
+
+/* Estilos generales */
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+:root {
+    --icon-color-light: #5A5A5A;
+    --icon-color-dark: #FFFFFF;
+    --color-complementary: #FF5757;
+}
+
+i {
+    color: var(--icon-color-light);
+}
+
+
+/* Header */
+
+#header {
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+h1 a {
+    background-color: var(--color-complementary);
+    font-family: 'Poppins';
+    font-weight: 700;
+    color: #FFFFFF;
+    padding: 5px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+
+/* Main */
+
+h2 {
+    color: var(--color-complementary);
+    font-family: 'Overpass';
+    font-weight: 900;
+    text-align: center;
+    font-size: 2rem;
+}
+
+
+/* Footer */
