@@ -9,7 +9,6 @@
     <link rel="icon" type="image/jpg" href="assets/img/favicon.png">
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
     <link rel="stylesheet" type="text/css" href="assets/fonts/fontawesome-6.4.0/css/all.min.css">
-    <script src="assets/js/main.js"></script>
 </head>
 
 <body>
@@ -22,65 +21,21 @@
         <h2>Lista de tareas por hacer</h2>
         <section id="content">
             <div>
-                <form action="" class="contenedor-add-tareas">
-                    <input type="text" name="input-tarea" id="input-tarea" placeholder="Añade una tarea">
+                <form class="contenedor-add-tareas" id="formulario">
+                    <input type="text" name="input-tarea" id="input-tarea" placeholder="Añade una tarea" required>
                     <input type="submit" value="Añadir" name="add-tarea" id="add-tarea">
                 </form>
             </div>
-            <!-- <div class="estado-tareas">
-                <p>Tareas hechas: <span id="total-hechas">20</span></p>
-                <p>Tareas pendientes: <span id="total-pendientes">30</span> </p>
-            </div> -->
-            <div class="tareas-pendientes">
-                <div class="tarea">
-                    <span>Tarea 1</span>
-                    <div class="iconos-modificar">
-                        <span><i class="fa-solid fa-trash"></i></span>
-                        <span><i class="fa-solid fa-pen-to-square"></i></span>
-                        <span><i class="fa-regular fa-circle-check"></i></span>
-                    </div>
-                </div>
-                <div class="tarea">
-                    <span>Tarea 1</span>
-                    <div class="iconos-modificar">
-                        <span><i class="fa-solid fa-trash"></i></span>
-                        <span><i class="fa-solid fa-pen-to-square"></i></span>
-                        <span><i class="fa-regular fa-circle-check"></i></span>
-                    </div>
-                </div>
-                <div class="tarea">
-                    <span>Tarea 1</span>
-                    <div class="iconos-modificar">
-                        <span><i class="fa-solid fa-trash"></i></span>
-                        <span><i class="fa-solid fa-pen-to-square"></i></span>
-                        <span><i class="fa-regular fa-circle-check"></i></span>
-                    </div>
-                </div>
-                <div class="tarea">
-                    <span>Tarea 1</span>
-                    <div class="iconos-modificar">
-                        <span><i class="fa-solid fa-trash"></i></span>
-                        <span><i class="fa-solid fa-pen-to-square"></i></span>
-                        <span><i class="fa-regular fa-circle-check"></i></span>
-                    </div>
-                </div>
-                <div class="tarea">
-                    <span>Tarea 1</span>
-                    <div class="iconos-modificar">
-                        <span><i class="fa-solid fa-trash"></i></span>
-                        <span><i class="fa-solid fa-pen-to-square"></i></span>
-                        <span><i class="fa-regular fa-circle-check"></i></span>
-                    </div>
-                </div>
+            <div id="tareas-pendientes">
             </div>
-
-
         </section>
     </main>
 
-    <footer id="footer">
 
-    </footer>
+
+    <!-- <script src="assets/js/main.js"></script> -->
+    <script src="assets/js/main2.js"></script>
+
 </body>
 
 </html>

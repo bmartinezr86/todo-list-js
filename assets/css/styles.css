@@ -43,6 +43,7 @@
     --generic-border-radius: 25px;
     --max-width: 1400px;
     --b-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    --fonts-alternatives: sans-serif;
 }
 
 i {
@@ -67,7 +68,7 @@ i:hover {
 
 h1 a {
     background-color: var(--color-complementary);
-    font-family: 'Poppins';
+    font-family: 'Poppins', var(--fonts-alternatives);
     font-weight: 700;
     color: #FFFFFF;
     padding: 5px;
@@ -80,14 +81,14 @@ h1 a {
 
 h2 {
     color: var(--color-complementary);
-    font-family: 'Overpass';
+    font-family: 'Overpass', var(--fonts-alternatives);
     font-weight: 900;
     text-align: center;
     font-size: 2rem;
 }
 
 #content {
-    font-family: 'Overpass';
+    font-family: 'Overpass', var(--fonts-alternatives);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -128,30 +129,15 @@ h2 {
     border-radius: 0px var(--generic-border-radius) var(--generic-border-radius) 0px;
     padding: 20px;
     border: 1px solid var(--color-complementary);
-    font-weight: 600px;
+    font-family: 'Overpass';
+    font-weight: 600;
 }
 
-
-/* .estado-tareas {
-    font-weight: 400;
-    color: var(--color-complementary);
-    background-color: var(--icon-color-dark);
-    box-shadow: var(--b-shadow);
-    width: 60%;
-    display: flex;
-    padding: 15px;
-    justify-content: center;
+input[type="submit"]:hover {
+    cursor: pointer;
 }
 
-.estado-tareas p {
-    margin: 10px;
-}
-
-.estado-tareas span {
-    color: var(--icon-color-light);
-} */
-
-.tareas-pendientes {
+#tareas-pendientes {
     display: flex;
     flex-direction: column;
     width: 1200px;
@@ -163,6 +149,7 @@ h2 {
     display: flex;
     width: 60%;
     justify-content: space-between;
+    align-items: center;
     background-color: var(--icon-color-dark);
     padding: 15px 20px;
     border-radius: var(--generic-border-radius);
@@ -172,5 +159,5 @@ h2 {
 }
 
 .tarea i {
-    margin: 1px;
+    margin: 5px;
 }
