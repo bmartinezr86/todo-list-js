@@ -17,9 +17,8 @@ for (const i in localStorage) {
         // Generar estructura del contenido
         const divTarea = document.createElement("div");
         divTarea.classList.add("tarea");
-
         const spanTarea = document.createElement("span");
-        spanTarea.setAttribute("data-codigo", localStorage.key(i));
+        spanTarea.setAttribute("data-codigo", i);
         spanTarea.textContent = localStorage[i];
 
 
