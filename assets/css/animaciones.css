@@ -1,0 +1,34 @@
+/* Clase para la animación de desvanecimiento */
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.fade-in-out {
+    animation: fadeInOut 3s infinite;
+}
+
+.prueba {
+    position: relative;
+    overflow: hidden;
+    width: 200px;
+    height: 100px;
+}
+
+@keyframes fadeMove {
+    0%,
+    100% {
+        opacity: 0;
+        transform: translateX(0);
+    }
+    25%,
+    75% {
+        opacity: 1;
+        transform: translateX(-100%);
+    }
+}

@@ -1,3 +1,8 @@
+/* Imports */
+
+@import url("responsive.css");
+@import url("animaciones.css");
+
 /* Fuentes */
 
 @font-face {
@@ -25,10 +30,6 @@
 }
 
 
-/* Imports */
-
-@import url("responsive.css");
-
 /* Estilos generales */
 
 * {
@@ -36,24 +37,45 @@
     padding: 0px;
 }
 
+.modoClaro {
+    --txt-color: #5A5A5A;
+    --icon-color: #5A5A5A;
+    --btn-add: #fff;
+    --bg-color: #FCFCFC;
+    --bg-input-color: #FFF;
+    --border-color: #ccc;
+    --b-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.modoOscuro {
+    --txt-color: #FFF;
+    --icon-color: #FFF;
+    --btn-add: #000;
+    --bg-color: #414141;
+    --bg-input-color: #1F1E1E;
+    --border-color: #414141;
+    --b-shadow: rgba(65, 65, 65, 0.2) 0px 8px 24px;
+}
+
 :root {
-    --icon-color-light: #5A5A5A;
-    --icon-color-dark: #FFFFFF;
     --color-complementary: #FF5757;
     --generic-border-radius: 25px;
     --max-width: 1400px;
-    --b-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     --fonts-alternatives: sans-serif;
 }
 
 i {
-    color: var(--icon-color-light);
+    color: var(--icon-color);
     transition: color 0.03s;
 }
 
 i:hover {
     color: var(--color-complementary);
     cursor: pointer;
+}
+
+body {
+    background-color: var(--bg-color);
 }
 
 
@@ -85,6 +107,9 @@ h2 {
     font-weight: 900;
     text-align: center;
     font-size: 2rem;
+    text-transform: uppercase;
+    margin-top: 70px;
+    margin-bottom: 10px;
 }
 
 #content {
@@ -94,6 +119,8 @@ h2 {
     justify-content: center;
     align-items: center;
     max-width: var(--max-width);
+    width: 800px;
+    margin: auto;
 }
 
 .contenedor-add-tareas {
@@ -112,10 +139,11 @@ h2 {
 .contenedor-add-tareas #input-tarea {
     border-radius: var(--generic-border-radius) 0px 0px var(--generic-border-radius);
     opacity: 0.75;
-    background-color: var(--icon-color-dark);
-    border: 1px solid #ccc;
+    background-color: var(--bg-input-color);
+    border: 1px solid var(--border-color);
     padding: 20px;
     width: 60%;
+    color: var(--txt-color);
 }
 
 #input-tarea:focus {
@@ -125,7 +153,7 @@ h2 {
 
 .contenedor-add-tareas input[type="submit"] {
     background-color: var(--color-complementary);
-    color: var(--icon-color-dark);
+    color: var(--btn-add);
     border-radius: 0px var(--generic-border-radius) var(--generic-border-radius) 0px;
     padding: 20px;
     border: 1px solid var(--color-complementary);
@@ -150,12 +178,13 @@ input[type="submit"]:hover {
     width: 60%;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--icon-color-dark);
+    background-color: var(--bg-input-color);
     padding: 15px 20px;
     border-radius: var(--generic-border-radius);
     box-shadow: var(--b-shadow);
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     margin-bottom: 10px;
+    color: var(--txt-color);
 }
 
 .tarea i {
