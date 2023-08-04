@@ -1,66 +1,144 @@
 'use strict'
 
+var formulario = document.querySelector("#formulario");
+var botonTema = document.querySelector("#boton-tema");
 
-const formulario = document.getElementById("formulario");
+function recogerValores(keyTarea = null, editar = false) {
+    formulario.addEventListener("submit", () => {
+        const inputTarea = document.querySelector("#input-tarea");
+        const nuevaTarea = inputTarea.value;
+        console.log(keyTarea);
 
-var submitTarea = document.getElementById("add-tarea");
-submitTarea.addEventListener("click", function(event) {
-    event.preventDefault();
-    var tarea = document.getElementById("input-tarea");
-    var tareaValor = tarea.value;
-
-    localStorage.setItem(generarKeyRandom(), tareaValor);
-    for (const i in localStorage) {
-
-        if (typeof localStorage[i] == "string") {
-            li.append(localStorage[i]);
-            ul.append(li);
+        if (!editar) {
+            keyTarea = "tarea_" + (localStorage.length + 1); // genera la key 
         }
-        generarTarea(localStorage.getItem(i));
+
+        localStorage.setItem(keyTarea, nuevaTarea);
+    });
+}
+
+
+function eliminarTarea(botonEliminar, animationClass, aviso = false) {
+    const tareaAEliminar = botonEliminar.parentNode.parentNode.parentNode;
+    const tareaAEliminarSPAN = tareaAEliminar.querySelector("span").getAttribute('data-codigo');
+
+    if (aviso) {
+        const confirmacion = window.confirm("¿Deseas realizar esta acción?");
+
+        if (confirmacion) {
+            tareaAEliminar.classList.add(animationClass);
+            setTimeout(() => {
+                localStorage.removeItem(tareaAEliminarSPAN); // Eliminar del localstorage
+                tareaAEliminar.remove(); // Eliminar del html
+            }, 3000);
+        }
+    } else {
+        tareaAEliminar.classList.add(animationClass);
+        setTimeout(() => {
+            localStorage.removeItem(tareaAEliminarSPAN); // Eliminar del localstorage
+            tareaAEliminar.remove(); // Eliminar del html
+        }, 3000);
     }
-
-});
-
-// Obtener el contenedor donde agregaremos las tareas
-const contenedorTareas = document.getElementById("tareas-pendientes");
-
-// Función para generar una tarea
-function generarTarea(nombreTarea) {
-    // Crear elementos de la tarea
-    const divTarea = document.createElement("div");
-    divTarea.classList.add("tarea");
-
-    const spanTarea = document.createElement("span");
-    spanTarea.textContent = nombreTarea;
-
-    const divIconosModificar = document.createElement("div");
-    divIconosModificar.classList.add("iconos-modificar");
-
-    const iconoEliminar = document.createElement("span");
-    iconoEliminar.innerHTML = '<i class="fa-solid fa-trash"></i>';
-
-    const iconoEditar = document.createElement("span");
-    iconoEditar.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
-
-    const iconoCheck = document.createElement("span");
-    iconoCheck.innerHTML = '<i class="fa-regular fa-circle-check"></i>';
-
-    // Agregar los elementos al contenedor de la tarea
-    divIconosModificar.appendChild(iconoEliminar);
-    divIconosModificar.appendChild(iconoEditar);
-    divIconosModificar.appendChild(iconoCheck);
-
-    divTarea.appendChild(spanTarea);
-    divTarea.appendChild(divIconosModificar);
-
-    // Agregar la tarea al contenedor de tareas
-    contenedorTareas.appendChild(divTarea);
 }
 
-function GenerarCodigoRandom() {
-    const numeroAleatorio = Math.floor(Math.random() * 10000);
-    const key = "tarea_" + numeroAleatorio;
-    return key
+function editarTarea(botonEdit) {
+    const keyTareaAEditar = botonEdit.parentNode.parentNode.parentNode.querySelector("span").getAttribute('data-codigo'); // Obtenemos el data-codigo del bloque para saber cual hay que editar
+    const tareaAnterior = localStorage[keyTareaAEditar]; // Obtenemos el valor almacenado en el localstorage
+    const inputTarea = document.querySelector("#input-tarea"); // Volvemos a seleccionar el input por donde se añaden las tareas
+    inputTarea.value = tareaAnterior; // Hacemos que el contenido del input sea el de la tarea que queramos editar
+    recogerValores(keyTareaAEditar, true);
 }
 
-console.log(GenerarCodigoRandom());
+
+function asignarEventosBotones() {
+    var botonesEliminar = document.querySelectorAll(".fa-trash");
+    botonesEliminar.forEach(botonEliminar => {
+        botonEliminar.addEventListener("click", () => {
+            eliminarTarea(botonEliminar, "fade-in-out", true)
+        });
+    });
+
+    // Editar tarea
+    var botonesEdit = document.querySelectorAll(".fa-pen-to-square");
+    botonesEdit.forEach(botonEdit => {
+        botonEdit.addEventListener("click", () => {
+            editarTarea(botonEdit);
+        });
+    });
+
+    // Finalizar tarea
+    var botonesHecho = document.querySelectorAll(".fa-circle-check");
+    botonesHecho.forEach(botonHecho => {
+        botonHecho.addEventListener("click", () => {
+            eliminarTarea(botonHecho, "fade-in-out");
+        });
+    });
+}
+
+// Generar listado de tareas
+function actualizarListaTareas() {
+    var contenedorListaTareas = document.querySelector("#tareas-pendientes");
+    for (const i in localStorage) {
+        if (typeof localStorage[i] == "string") {
+            // Generar estructura del contenido
+            const divTarea = document.createElement("div");
+            divTarea.classList.add("tarea");
+            const spanTarea = document.createElement("span");
+            spanTarea.setAttribute("data-codigo", i);
+            spanTarea.textContent = localStorage[i];
+
+
+            const divIconosModificar = document.createElement("div");
+            divIconosModificar.classList.add("iconos-modificar");
+
+            const iconoEliminar = document.createElement("span");
+            iconoEliminar.innerHTML = '<i class="fa-solid fa-trash"></i>';
+
+            const iconoEditar = document.createElement("span");
+            iconoEditar.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
+
+            const iconoCheck = document.createElement("span");
+            iconoCheck.innerHTML = '<i class="fa-regular fa-circle-check"></i>';
+
+            // Agregar los elementos al contenedor de la tarea
+            divIconosModificar.appendChild(iconoEliminar);
+            divIconosModificar.appendChild(iconoEditar);
+            divIconosModificar.appendChild(iconoCheck);
+
+            divTarea.appendChild(spanTarea);
+            divTarea.appendChild(divIconosModificar);
+
+            // Agregar la tarea al contenedor de tareas
+            contenedorListaTareas.appendChild(divTarea);
+        }
+    }
+    // Volver a asignar los eventos a los nuevos botonesEventosBotones()
+    asignarEventosBotones();
+}
+
+function cambiarTema() {
+    botonTema.addEventListener("click", () => {
+        const body = document.querySelector("body");
+        const botonModoOscuro = document.querySelector(".fa-moon");
+        const botonModoClaro = document.querySelector(".fa-sun");
+
+        body.classList.add("modoClaro");
+        if (botonModoOscuro) {
+            botonTema.classList.add("fa-sun");
+            body.classList.add("modoOscuro");
+            botonTema.classList.remove("fa-moon");
+            body.classList.remove("modoClaro");
+
+        } else {
+            botonTema.classList.remove("fa-sun");
+            body.classList.add("modoClaro");
+            botonTema.classList.add("fa-moon");
+            body.classList.remove("modoOscuro");
+        }
+    });
+}
+
+// Inicializar eventos y lista de tareas al cargar la página
+cambiarTema();
+recogerValores();
+actualizarListaTareas();
