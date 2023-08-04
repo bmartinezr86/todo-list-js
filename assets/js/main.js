@@ -30,14 +30,14 @@ function eliminarTarea(botonEliminar, animationClass, aviso = false) {
             setTimeout(() => {
                 localStorage.removeItem(tareaAEliminarSPAN); // Eliminar del localstorage
                 tareaAEliminar.remove(); // Eliminar del html
-            }, 3000);
+            }, 1000);
         }
     } else {
         tareaAEliminar.classList.add(animationClass);
         setTimeout(() => {
             localStorage.removeItem(tareaAEliminarSPAN); // Eliminar del localstorage
             tareaAEliminar.remove(); // Eliminar del html
-        }, 3000);
+        }, 1000);
     }
 }
 
@@ -54,7 +54,7 @@ function asignarEventosBotones() {
     var botonesEliminar = document.querySelectorAll(".fa-trash");
     botonesEliminar.forEach(botonEliminar => {
         botonEliminar.addEventListener("click", () => {
-            eliminarTarea(botonEliminar, "fade-in-out", true)
+            eliminarTarea(botonEliminar, "fade-move", true)
         });
     });
 
@@ -117,18 +117,16 @@ function actualizarListaTareas() {
 }
 
 function cambiarTema() {
+    var body = document.querySelector("body");
+    body.classList.add("modoClaro");
     botonTema.addEventListener("click", () => {
-        const body = document.querySelector("body");
         const botonModoOscuro = document.querySelector(".fa-moon");
         const botonModoClaro = document.querySelector(".fa-sun");
-
-        body.classList.add("modoClaro");
         if (botonModoOscuro) {
             botonTema.classList.add("fa-sun");
             body.classList.add("modoOscuro");
             botonTema.classList.remove("fa-moon");
             body.classList.remove("modoClaro");
-
         } else {
             botonTema.classList.remove("fa-sun");
             body.classList.add("modoClaro");
