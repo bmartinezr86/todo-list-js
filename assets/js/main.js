@@ -2,18 +2,13 @@
 
 var formulario = document.querySelector("#formulario");
 var botonTema = document.querySelector("#boton-tema");
+var inputTarea = inputTarea = document.querySelector("#input-tarea");
 
-function recogerValores(keyTarea = null, editar = false) {
+function recogerValores() {
     formulario.addEventListener("submit", () => {
-        const inputTarea = document.querySelector("#input-tarea");
         const nuevaTarea = inputTarea.value;
-        console.log(keyTarea);
-
-        if (!editar) {
-            keyTarea = "tarea_" + (localStorage.length + 1); // genera la key 
-        }
-
-        localStorage.setItem(keyTarea, nuevaTarea);
+        const keyTarea = "tarea_" + (localStorage.length + 1); // genera la key 
+        localStorage.setItem(keyTarea,nuevaTarea);
     });
 }
 
@@ -30,41 +25,41 @@ function eliminarTarea(botonEliminar, animationClass, aviso = false) {
             setTimeout(() => {
                 localStorage.removeItem(tareaAEliminarSPAN); // Eliminar del localstorage
                 tareaAEliminar.remove(); // Eliminar del html
-            }, 3000);
+            }, 1000);
         }
     } else {
         tareaAEliminar.classList.add(animationClass);
         setTimeout(() => {
             localStorage.removeItem(tareaAEliminarSPAN); // Eliminar del localstorage
             tareaAEliminar.remove(); // Eliminar del html
-        }, 3000);
+        }, 1000);
     }
 }
 
-function editarTarea(botonEdit) {
-    const keyTareaAEditar = botonEdit.parentNode.parentNode.parentNode.querySelector("span").getAttribute('data-codigo'); // Obtenemos el data-codigo del bloque para saber cual hay que editar
-    const tareaAnterior = localStorage[keyTareaAEditar]; // Obtenemos el valor almacenado en el localstorage
-    const inputTarea = document.querySelector("#input-tarea"); // Volvemos a seleccionar el input por donde se añaden las tareas
-    inputTarea.value = tareaAnterior; // Hacemos que el contenido del input sea el de la tarea que queramos editar
-    recogerValores(keyTareaAEditar, true);
-}
+// function editarTarea(botonEdit) {
+//     keyTarea = botonEdit.parentNode.parentNode.parentNode.querySelector("span").getAttribute('data-codigo'); // Obtenemos el data-codigo del bloque para saber cual hay que editar
+//     const tareaAnterior = localStorage[keyTarea]; // Obtenemos el valor almacenado en el localstorage
+//     inputTarea.value = tareaAnterior; // Hacemos que el contenido del input sea el de la tarea que queramos editar
+// }
+
 
 
 function asignarEventosBotones() {
     var botonesEliminar = document.querySelectorAll(".fa-trash");
     botonesEliminar.forEach(botonEliminar => {
         botonEliminar.addEventListener("click", () => {
-            eliminarTarea(botonEliminar, "fade-in-out", true)
+            eliminarTarea(botonEliminar, "fade-move", true)
         });
     });
 
-    // Editar tarea
-    var botonesEdit = document.querySelectorAll(".fa-pen-to-square");
-    botonesEdit.forEach(botonEdit => {
-        botonEdit.addEventListener("click", () => {
-            editarTarea(botonEdit);
-        });
-    });
+    // // Editar tarea
+    // var botonesEdit = document.querySelectorAll(".fa-pen-to-square");
+    // botonesEdit.forEach(botonEdit => {
+    //     botonEdit.addEventListener("click", () => {
+    //         editarTarea(botonEdit);
+    //         isEdit(true);
+    //     });
+    // });
 
     // Finalizar tarea
     var botonesHecho = document.querySelectorAll(".fa-circle-check");
@@ -73,7 +68,9 @@ function asignarEventosBotones() {
             eliminarTarea(botonHecho, "fade-in-out");
         });
     });
+
 }
+
 
 // Generar listado de tareas
 function actualizarListaTareas() {
@@ -94,15 +91,15 @@ function actualizarListaTareas() {
             const iconoEliminar = document.createElement("span");
             iconoEliminar.innerHTML = '<i class="fa-solid fa-trash"></i>';
 
-            const iconoEditar = document.createElement("span");
-            iconoEditar.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
+            // const iconoEditar = document.createElement("span");
+            // iconoEditar.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
 
             const iconoCheck = document.createElement("span");
             iconoCheck.innerHTML = '<i class="fa-regular fa-circle-check"></i>';
 
             // Agregar los elementos al contenedor de la tarea
             divIconosModificar.appendChild(iconoEliminar);
-            divIconosModificar.appendChild(iconoEditar);
+            // divIconosModificar.appendChild(iconoEditar);
             divIconosModificar.appendChild(iconoCheck);
 
             divTarea.appendChild(spanTarea);
@@ -117,18 +114,16 @@ function actualizarListaTareas() {
 }
 
 function cambiarTema() {
+    var body = document.querySelector("body");
+    body.classList.add("modoClaro");
     botonTema.addEventListener("click", () => {
-        const body = document.querySelector("body");
         const botonModoOscuro = document.querySelector(".fa-moon");
         const botonModoClaro = document.querySelector(".fa-sun");
-
-        body.classList.add("modoClaro");
         if (botonModoOscuro) {
             botonTema.classList.add("fa-sun");
             body.classList.add("modoOscuro");
             botonTema.classList.remove("fa-moon");
             body.classList.remove("modoClaro");
-
         } else {
             botonTema.classList.remove("fa-sun");
             body.classList.add("modoClaro");

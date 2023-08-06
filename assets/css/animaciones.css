@@ -9,26 +9,21 @@
     }
 }
 
-.fade-in-out {
-    animation: fadeInOut 3s infinite;
-}
-
-.prueba {
-    position: relative;
-    overflow: hidden;
-    width: 200px;
-    height: 100px;
-}
-
 @keyframes fadeMove {
-    0%,
-    100% {
-        opacity: 0;
+    0% {
+        opacity: 1;
         transform: translateX(0);
     }
-    25%,
-    75% {
-        opacity: 1;
-        transform: translateX(-100%);
+    100% {
+        opacity: 0;
+        transform: translateX(-50%);
     }
+}
+
+.fade-in-out {
+    animation: fadeInOut 1s;
+}
+
+.fade-move {
+    animation: fadeMove 1s;
 }
