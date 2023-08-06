@@ -11,7 +11,11 @@ Proyecto sencillo de un To-do List que permite añadir, elimnar y finzalizar tar
 0.0.1
 
 ## Tecnologías:
-![HTML](assets/img/html-5.png) ![CSS](assets/img/css-3.png) ![JS](assets/img/js.png)
+<img src="assets/img/html-5.png" alt="HTML" width="5%">
+<img src="assets/img/css-3.png" alt="CSS" width="5%">
+<img src="assets/img/js.png" alt="JS" width="5%"> 
+
+<br>
 
 ## Mejoras futuras
 - Hacerlo responsive.
