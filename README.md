@@ -8,17 +8,14 @@ Proyecto sencillo de un To-do List que permite añadir, elimnar y finzalizar tar
 - Repasar y descubrir nuevas implementaciones en maquetación con CSS.
 
 ## Version
-0.0.1
+0.0.1.2
 
 ## Tecnologías:
-<img src="assets/img/html-5.png" alt="HTML" width="5%">
-<img src="assets/img/css-3.png" alt="CSS" width="5%">
-<img src="assets/img/js.png" alt="JS" width="5%"> 
+<img src="assets/img/html-5.png" alt="HTML" width="5%"> <img src="assets/img/css-3.png" alt="CSS" width="5%"> <img src="assets/img/js.png" alt="JS" width="5%"> 
 
 <br>
 
 ## Mejoras futuras
-- Hacerlo responsive.
 - Implementar más funcionalidades: 
   - Editar tareas.
   - Traducciones.
