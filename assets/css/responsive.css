@@ -1,125 +1,151 @@
 /* Fichero que tiene los media querys para el responsive*/
 
 @media screen and (max-width: 874px) {
-     :root {
+    :root {
         --max-width: 800px;
     }
+
     #header {
         padding: 10px 0px;
         display: flex;
         justify-content: space-ar;
         align-items: center;
     }
+
     h1 a {
         padding: 10px;
     }
+
     #content {
         max-width: var(--max-width);
         width: 80%;
     }
+
     .contenedor-add-tareas {
         width: 800px;
         max-width: var(--max-width);
     }
+
     #tareas-pendientes {
         width: 100%;
     }
 }
 
 @media screen and (max-width: 616px) {
-     :root {
+    :root {
         --max-width: 550px;
     }
+
     #header {
         padding: 10px 8%;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
+
     h2 {
         font-size: 1.25rem;
     }
+
     #content {
         max-width: var(--max-width);
     }
+
     .contenedor-add-tareas {
         width: var(--max-width);
         max-width: var(--max-width);
         padding: 10px;
     }
+
     .tarea {
         width: 70%;
         padding: 10px 5%;
     }
+
     .contenedor-add-tareas input[type="submit"] {
         padding: 10px 5%;
     }
+
     .contenedor-add-tareas #input-tarea {
         width: 100%;
     }
 }
 
 @media screen and (max-width:578px) {
-     :root {
+    :root {
         --max-width: 400px;
     }
+
     #header {
         padding: 10px 8%;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
+
     h2 {
         font-size: 1.25rem;
     }
+
     #content {
         max-width: var(--max-width);
     }
+
     .contenedor-add-tareas {
         width: var(--max-width);
         max-width: var(--max-width);
         padding: 10px;
     }
+
     .tarea {
         width: 70%;
         padding: 10px 5%;
     }
+
     .contenedor-add-tareas input[type="submit"] {
         padding: 10px 5%;
     }
+
     .contenedor-add-tareas #input-tarea {
         width: 100%;
     }
 }
 
 @media screen and (max-width:406px) {
-     :root {
+    :root {
         --max-width: 350px;
     }
+
     #header {
         padding: 10px 8%;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
+
     h2 {
         font-size: 1.25rem;
     }
+
     #content {
         max-width: var(--max-width);
     }
+
     .contenedor-add-tareas {
         width: var(--max-width);
         max-width: var(--max-width);
         padding: 10px;
     }
+
     .tarea {
         width: 70%;
         padding: 10px 5%;
     }
+
     .contenedor-add-tareas input[type="submit"] {
         padding: 10px 5%;
     }
+
     .contenedor-add-tareas #input-tarea {
         width: 100%;
     }
